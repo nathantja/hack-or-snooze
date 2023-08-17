@@ -21,3 +21,8 @@ nav {
   margin-left: auto;
   text-align: right;
 }
+
+.nav-left {
+  margin-right: auto;
+  text-align: left;
+}

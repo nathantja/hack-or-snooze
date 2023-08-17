@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hack or Snooze</title>
-  <link rel="stylesheet" 
+  <link rel="stylesheet"
         href="https://www.unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/user.css">
@@ -33,13 +33,47 @@
 <nav>
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
+
   </div>
+
+  <div class="nav-left">
+    |
+    <a class="nav-link" href="#" id="nav-submit">submit</a>
+    |
+    <a class="nav-link" href="#" id="nav-favorites">favorites</a>
+    |
+    <a class="nav-link" href="#" id="nav-my-stories">my stories</a>
+  </div>
+
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
     <a class="nav-link" href="#" id="nav-user-profile"></a>
     <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
+
+<!-- story submission area -->
+<section class="story-form-container container">
+
+  <!-- story submission form -->
+  <form id="story-submit" class="story-form hidden">
+    <div class="story-inputs">
+      <label for="story-author">author</label>
+      <input id="story-author" placeholder="author name">
+    </div>
+    <div class="story-inputs">
+      <label for="story-title">title</label>
+      <input id="story-title" placeholder="story title">
+    </div>
+    <div class="story-inputs">
+      <label for="story-url">url</label>
+      <input id="story-url" placeholder="story url">
+    </div>
+    <button type="submit">Submit</button>
+
+    <hr>
+  </form>
+</section>
 
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">

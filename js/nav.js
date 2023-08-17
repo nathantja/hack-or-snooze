@@ -4,6 +4,17 @@
  * Handling navbar clicks and updating navbar
  */
 
+function submitTabClick(evt){
+  console.debug("submitTabClick", evt);
+  evt.preventDefault();
+  $submitArea.show();
+  console.log("button click works")
+
+}
+
+$submitTab.on('click',submitTabClick);
+
+
 /** Show main list of all stories when click site name */
 
 function navAllStories(evt) {
@@ -36,3 +47,5 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+
