@@ -4,12 +4,11 @@
  * Handling navbar clicks and updating navbar
  */
 
+/** handles click on the submit tab in navbar */
 function submitTabClick(evt){
   console.debug("submitTabClick", evt);
   evt.preventDefault();
   $submitArea.show();
-  console.log("button click works")
-
 }
 
 $submitTab.on('click',submitTabClick);

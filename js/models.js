@@ -97,7 +97,7 @@ class StoryList {
     const { storyId, title, author, url, username, createdAt } = storyData.story;
 
     // ADD TO STORY LIST
-    await StoryList.getStories();
+    storyList = await StoryList.getStories();
 
 
     // RETURN NEW STORY
