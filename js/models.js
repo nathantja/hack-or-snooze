@@ -121,20 +121,18 @@ class StoryList {
 //   }
 //   );
 
-  // MAKE A STORY INSTANCE
-  const storyData = await response.json();
-  const { storyId, title, author, url, username, createdAt } = storyData.story;
+//   // MAKE A STORY INSTANCE
+//   const storyData = await response.json();
+//   const { storyId, title, author, url, username, createdAt } = storyData.story;
 
-  // ADD TO STORY LIST
-  StoryList.getStories();
-console.log("storyId", storyId)
-console.log("title", title)
-  debugger;
-  // RETURN NEW STORY
-  return new Story({ storyId, title, author, url, username, createdAt });
-}
-
-
+//   // ADD TO STORY LIST
+//   StoryList.getStories();
+// console.log("storyId", storyId)
+// console.log("title", title)
+//   debugger;
+//   // RETURN NEW STORY
+//   return new Story({ storyId, title, author, url, username, createdAt });
+// }
 
 
 
