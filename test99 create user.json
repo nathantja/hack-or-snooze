@@ -1,0 +1,20 @@
+// message received after signup
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q5OSIsImlhdCI6MTY5MjI5MjkxOH0.lVBKHwx13kbBrsTvb7aFr7fn0lXpANrOFq_56hnERE4",
+  "user": {
+    "createdAt": "2023-08-17T17:21:58.515Z",
+    "favorites": [],
+    "name": "Test User",
+    "stories": [],
+    "updatedAt": "2023-08-17T17:21:58.515Z",
+    "username": "test99"
+  }
+}
+
+
+// used to post a story
+curl -i \
+     -H "Content-Type: application/json" \
+     -X POST \
+     -d '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q5OSIsImlhdCI6MTY5MjI5MjkxOH0.lVBKHwx13kbBrsTvb7aFr7fn0lXpANrOFq_56hnERE4", "story": {"author":"test99","title":"test99", "url": "https://www.google.com"} }' \
+      https://hack-or-snooze-v3.herokuapp.com/stories
