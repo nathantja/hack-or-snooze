@@ -18,3 +18,15 @@ curl -i \
      -X POST \
      -d '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q5OSIsImlhdCI6MTY5MjI5MjkxOH0.lVBKHwx13kbBrsTvb7aFr7fn0lXpANrOFq_56hnERE4", "story": {"author":"test99","title":"test99", "url": "https://www.google.com"} }' \
       https://hack-or-snooze-v3.herokuapp.com/stories
+
+// api response AFTER posing story
+
+{
+  "story": {"author":"test99-b",
+          "createdAt":"2023-08-17T19:11:36.365Z",
+          "storyId":"cc6c4b37-3bb5-43d9-a03f-1056046b93f9",
+          "title":"test99-b",
+          "updatedAt":"2023-08-17T19:11:36.365Z",
+          "url":"https://www.google.com",
+          "username":"test99"}
+        }

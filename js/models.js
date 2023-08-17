@@ -74,7 +74,7 @@ class StoryList {
    */
 
   async addStory(user, newStory) {
-    // UNIMPLEMENTED: complete this function!
+    // POST request to the API
     const userToken = user.loginToken;
     const response = await fetch(`${BASE_URL}/stories`, {
       method: "POST",
@@ -82,18 +82,65 @@ class StoryList {
         token: userToken,
         story: {
           author: newStory.author,
-          story: newStory.story,
+          title: newStory.title,
           url: newStory.url
         }
       }),
-      headers : {
-        "Content-Type" : "application/json"
+      headers: {
+        "Content-Type": "application/json"
       }
     });
+
+    // MAKE A STORY INSTANCE
+    const storyData = await response.json();
+    const { storyId, title, author, url, username, createdAt } = storyData.story;
+
+    // ADD TO STORY LIST
+    StoryList.getStories();
+
+    // RETURN NEW STORY
+    return new Story({ storyId, title, author, url, username, createdAt });
   }
 
-
 }
+
+// //* Test POST story
+// async function testAddStory() {
+//   const userToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q5OSIsImlhdCI6MTY5MjI5MjkxOH0.lVBKHwx13kbBrsTvb7aFr7fn0lXpANrOFq_56hnERE4";
+//   const response = await fetch(`https://hack-or-snooze-v3.herokuapp.com/stories`, {
+//     method: "POST",
+//     body: JSON.stringify({
+//       token: userToken,
+//       story: {
+//         author: "test99-b",
+//         title: "test99-b",
+//         url: "https://www.google.com"
+//       }
+//     }),
+//     headers: { "Content-Type": "application/json" }
+//   }
+//   );
+
+  // MAKE A STORY INSTANCE
+  const storyData = await response.json();
+  const { storyId, title, author, url, username, createdAt } = storyData.story;
+
+  // ADD TO STORY LIST
+  StoryList.getStories();
+console.log("storyId", storyId)
+console.log("title", title)
+  debugger;
+  // RETURN NEW STORY
+  return new Story({ storyId, title, author, url, username, createdAt });
+}
+
+
+
+
+
+
+
+
 
 
 /******************************************************************************
