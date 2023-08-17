@@ -66,15 +66,15 @@ async function submitStoryAndDisplay(evt) {
   const newStory = { title, author, url };
 
   // .addStory instance method
-  await storyList.addStory(currentUser, newStory);
+  const newSingleStory = await storyList.addStory(currentUser, newStory);
 
   // Display stories on page
-  putStoriesOnPage();
+  const prependStory = generateStoryMarkup(newSingleStory);
+  $allStoriesList.prepend(prependStory);
+
 
   //Clear submit form input values
-  $submitAuthorInput.val("");
-  $submitTitleInput.val("");
-  $submitUrlInput.val("");
+  $('.submit-input').val("");
 
   //hides submit form once complete
   $submitArea.hide();
