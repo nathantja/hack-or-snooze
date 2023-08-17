@@ -50,3 +50,35 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+
+/** Function gets data from the submit form, calls the .addStory method, and
+then puts that new story on the page.
+ *
+ */
+function submitStoryAndDisplay(evt) {
+  evt.preventDefault();
+  // Get data from the submit form
+  const author = $submitAuthorInput.val();
+  const title = $submitTitleInput.val();
+  const url = $submitUrlInput.val();
+
+  const newStory = {title, author, url};
+
+  // .addStory instance method
+  storyList.addStory(currentUser, newStory)
+
+  // Display stories on page
+  getAndShowStoriesOnStart();
+
+  console.log("story added!")
+
+  //Clear submit form input values
+  $submitAuthorInput.val("");
+  $submitTitleInput.val("");
+  $submitUrlInput.val("");
+}
+
+$submitBtn.on("click", submitStoryAndDisplay);
+
+

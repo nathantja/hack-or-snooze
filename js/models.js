@@ -22,10 +22,11 @@ class Story {
   }
 
   /** Parses hostname out of URL and returns it. */
-
+  // https://developer.mozilla.org/en-US/docs/Web/API/URL/hostname
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    const url = new URL(`${this.url}`);
+
+    return url.hostname;
   }
 }
 
