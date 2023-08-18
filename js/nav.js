@@ -53,10 +53,12 @@ $navLogin.on("click", navLoginClick);
 
 function updateNavOnLogin() {
   console.debug("updateNavOnLogin");
+  hidePageComponents();
   $(".main-nav-links").show();
   $navLogin.hide();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
+  putStoriesOnPage();
 }
 
 

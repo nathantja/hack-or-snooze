@@ -22,9 +22,18 @@ async function getAndShowStoriesOnStart() {
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
   const hostName = story.getHostName();
+  const favoriteStory = "bi bi-star-fill";
+  const notFavoriteStory = "bi bi-star";
+  const noCurrentUser = "bi bi-star hidden";
+  let addClass = noCurrentUser;
+
+  if (currentUser) {
+    currentUser.favorites.includes(story) ? addClass = favoriteStory : addClass = notFavoriteStory;
+  }
+
   return $(`
       <li id="${story.storyId}">
-        <i class="bi bi-star"></i>
+        <i class="${addClass}"></i>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -135,22 +144,22 @@ function putFavoritesOnPage() {
 }
 
 
-function rememberFavorites() {
+// function rememberFavorites() {
 
-// look at favorites - if they exist in $allStoriesList (ol), then change class to bi-star-fill
-// currentUser.favorites array -
+// // look at favorites - if they exist in $allStoriesList (ol), then change class to bi-star-fill
+// // currentUser.favorites array -
 
-const $allStoryListItems = $("#all-stories-list > li");
-const favorites = currentUser.favorites;
-let listOfFavoritesIds = [];
+// const $allStoryListItems = $("#all-stories-list > li");
+// const favorites = currentUser.favorites;
+// let listOfFavoritesIds = [];
 
-favorites.forEach((story) => listOfFavoritesIds.push(story.storyId))
+// favorites.forEach((story) => listOfFavoritesIds.push(story.storyId))
 
-$allStoryListItems.each(function($li){
-  if (listOfFavoritesIds.includes($li.attr("id"))){
-    $li.closest('i').attr('class','bi bi-star-fill')
-  }
+// $allStoryListItems.each(function($li){
+//   if (listOfFavoritesIds.includes($li.attr("id"))){
+//     $li.closest('i').attr('class','bi bi-star-fill')
+//   }
 
-});
+// });
 
-}
+// }

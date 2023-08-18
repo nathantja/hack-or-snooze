@@ -278,6 +278,7 @@ class User {
    * array.
    * Method parameter takes a Story instance. */
   async removeFavorite(story) {
+    debugger;
     const username = currentUser.username;
     const storyId = story.storyId;
     const token = currentUser.loginToken;
