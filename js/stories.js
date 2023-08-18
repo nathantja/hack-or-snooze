@@ -21,7 +21,6 @@ async function getAndShowStoriesOnStart() {
 
 function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
-
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
@@ -48,7 +47,7 @@ function putStoriesOnPage() {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
   }
-
+  // saved favorites function here
   $allStoriesList.show();
 }
 
@@ -130,6 +129,7 @@ function putFavoritesOnPage() {
     const $story = generateStoryMarkup(story);
     $allStoriesList.append($story);
   }
+  // saved favorites function here
 
   $allStoriesList.show();
 }
@@ -140,10 +140,17 @@ function rememberFavorites() {
 // look at favorites - if they exist in $allStoriesList (ol), then change class to bi-star-fill
 // currentUser.favorites array -
 
+const $allStoryListItems = $("#all-stories-list > li");
+const favorites = currentUser.favorites;
+let listOfFavoritesIds = [];
 
+favorites.forEach((story) => listOfFavoritesIds.push(story.storyId))
 
+$allStoryListItems.each(function($li){
+  if (listOfFavoritesIds.includes($li.attr("id"))){
+    $li.closest('i').attr('class','bi bi-star-fill')
+  }
 
-
-
+});
 
 }
