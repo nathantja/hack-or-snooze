@@ -8,10 +8,22 @@
 function submitTabClick(evt){
   console.debug("submitTabClick", evt);
   evt.preventDefault();
+  hidePageComponents();
+  putStoriesOnPage();
   $submitArea.show();
 }
 
 $submitTab.on('click',submitTabClick);
+
+/** handles click on the favorites tab in navboar */
+function favoritesTabClick(evt){
+  console.debug("favoritesTabClick", evt);
+  evt.preventDefault();
+  hidePageComponents();
+  $favoritesArea.show();
+}
+
+$favoritesTab.on('click',favoritesTabClick);
 
 
 /** Show main list of all stories when click site name */

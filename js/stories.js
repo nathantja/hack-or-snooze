@@ -92,7 +92,7 @@ async function clickEmptyStar(evt) {
   $(evt.target).attr('class', 'bi bi-star-fill');
   const clickedStoryId = $(evt.target).closest('li').attr('id');
 
-  const story = findStoryFromId(clickedStoryId);
+  const story = Story.findStoryFromId(clickedStoryId);
 
   await currentUser.addFavorite(story);
 }
@@ -108,7 +108,7 @@ async function clickFilledStar(evt) {
   $(evt.target).attr('class', 'bi bi-star');
   const clickedStoryId = $(evt.target).closest('li').attr('id');
 
-  const story = findStoryFromId(clickedStoryId);
+  const story = Story.findStoryFromId(clickedStoryId);
 
   await currentUser.removeFavorite(story);
 }
@@ -117,14 +117,9 @@ async function clickFilledStar(evt) {
 $allStoriesList.on("click", ".bi-star-fill", clickFilledStar);
 
 
-/** Function returns the story from the storyList matching the given story Id.
- * @returns Story instance */
-function findStoryFromId(Id) {
-  const storiesArray = storyList.stories;
 
-  for (let i = 0; i < storiesArray.length; i++) {
-    if (storiesArray[i].storyId === Id) {
-      return storiesArray[i];
-    }
-  }
+
+function showFavorites(){
+
 }
+

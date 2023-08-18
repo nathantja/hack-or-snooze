@@ -28,6 +28,18 @@ class Story {
 
     return url.hostname;
   }
+
+  /** returns the story from the storyList matching the given story Id.
+ * @returns Story instance */
+static findStoryFromId(Id) {
+  const storiesArray = storyList.stories;
+
+  for (let i = 0; i < storiesArray.length; i++) {
+    if (storiesArray[i].storyId === Id) {
+      return storiesArray[i];
+    }
+  }
+}
 }
 
 
