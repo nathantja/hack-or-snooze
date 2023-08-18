@@ -20,7 +20,7 @@ function favoritesTabClick(evt){
   console.debug("favoritesTabClick", evt);
   evt.preventDefault();
   hidePageComponents();
-  $favoritesArea.show();
+  putFavoritesOnPage();
 }
 
 $favoritesTab.on('click',favoritesTabClick);

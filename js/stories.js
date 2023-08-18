@@ -118,8 +118,32 @@ $allStoriesList.on("click", ".bi-star-fill", clickFilledStar);
 
 
 
+/** Get list of stories from user's favorites array, generates their HTML, and
+puts on page.
+ */
+function putFavoritesOnPage() {
+  console.debug("putFavoritesOnPage");
 
-function showFavorites(){
+  $allStoriesList.empty();
 
+  for (let story of currentUser.favorites) {
+    const $story = generateStoryMarkup(story);
+    $allStoriesList.append($story);
+  }
+
+  $allStoriesList.show();
 }
 
+
+function rememberFavorites() {
+
+// look at favorites - if they exist in $allStoriesList (ol), then change class to bi-star-fill
+// currentUser.favorites array -
+
+
+
+
+
+
+
+}

@@ -23,7 +23,6 @@ const $submitTitleInput = $("#story-title");
 const $submitUrlInput = $("#story-url");
 
 const $favoritesTab = $("#nav-favorites");
-const $favoritesArea = $("#all-favorites-list");
 
 
 /** To make it easier for individual components to show just themselves, this
@@ -36,8 +35,7 @@ function hidePageComponents() {
     $allStoriesList,
     $loginForm,
     $signupForm,
-    $submitArea,
-    $favoritesArea
+    $submitArea
   ];
   components.forEach(c => c.hide());
 }

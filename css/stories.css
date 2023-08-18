@@ -38,3 +38,15 @@
   display: block;
 }
 
+
+/* Lists of favorite stories */
+
+.favorites-stories-list {
+  margin: 20px 5px;
+}
+
+.favorites-stories-list > li {
+  color: gray;
+  font-size: 0.8rem;
+  margin: 10px 0;
+}
