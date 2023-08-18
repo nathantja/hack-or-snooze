@@ -236,15 +236,16 @@ class User {
     }
   }
 
-  /** Allow the user to add a story to favorites.*/
+  /** Allow the user to add a story to favorites. Favorites is updated via an
+   * API request and also added to the current user instance's favorites array.
+   * Method parameter takes a Story instance. */
   async addFavorite(story) {
 
     const username = currentUser.username;
     const storyId = story.storyId;
     const token = currentUser.loginToken;
 
-    // send story to API
-    // https://hack-or-snooze-v3.herokuapp.com/users/{username}/favorites/storyId
+    // API request to add favorite to the user's account
     const response = await fetch(
       `${BASE_URL}/users/${username}/favorites/${storyId}`,
       {
@@ -254,17 +255,22 @@ class User {
       }
     );
 
+    // Add favorite to the currentUser's favorites array
+    currentUser.favorites.push(story);
 
   }
 
 
-  /** Allow the user to remove a story from favorites. */
+    /** Remove a favorite story from the user's profile. Favorite is removed via
+   * an API request and also removed from the current user instance's favorites
+   * array.
+   * Method parameter takes a Story instance. */
   async removeFavorite(story) {
-
     const username = currentUser.username;
     const storyId = story.storyId;
     const token = currentUser.loginToken;
 
+    // API request to remove favorite from the user's account
     const response = await fetch(
       `${BASE_URL}/users/${username}/favorites/${storyId}`,
       {
@@ -275,7 +281,9 @@ class User {
       }
     );
 
+    // Remove favorite from the currentUser's favorites array
+    const indexToRemove = currentUser.favorites.indexOf(story);
+    currentUser.favorites.splice(indexToRemove, 1);
   }
-
 
 }
