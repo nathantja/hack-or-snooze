@@ -84,37 +84,47 @@ async function submitStoryAndDisplay(evt) {
 /** handles click for story submission form */
 $submitBtn.on("click", submitStoryAndDisplay);
 
-function emptyStarToggle(evt) {
+
+/** Handler function when an empty star is clicked. Locates the parent li story
+Id and passes it to the addFavorite method.
+ */
+async function clickEmptyStar(evt) {
   $(evt.target).attr('class', 'bi bi-star-fill');
-
   const clickedStoryId = $(evt.target).closest('li').attr('id');
-  console.log(clickedStoryId);
 
+  const story = findStoryFromId(clickedStoryId);
 
-
-  let story;
-  for (let i =0; i < storyList.stories.length; i++){
-    if (storyList.stories[i].storyId === clickedStoryId){
-      story = storyList.stories[i];
-    }
-  }
-
-  console.log(story);
-  // .map version
-  // const story = storyList.stories.map((story) => {
-  //   if (story.storyId === storyId) {
-  //     return story;
-  //   }
-  // });
-
-
-  // console.log('story after map returns', story);
-  // console.log("story Id is", story.storyId);
-  // await currentUser.addFavorite(story);
+  await currentUser.addFavorite(story);
 }
 
-$allStoriesList.on("click", ".bi-star", emptyStarToggle);
+/** Event delegation to handle click of empty star */
+$allStoriesList.on("click", ".bi-star", clickEmptyStar);
 
-// function findStory(id) {
 
-// }
+/** Handler function when an filled star is clicked. Locates the parent li story
+Id and passes it to the removeFavorite method.
+ */
+async function clickFilledStar(evt) {
+  $(evt.target).attr('class', 'bi bi-star');
+  const clickedStoryId = $(evt.target).closest('li').attr('id');
+
+  const story = findStoryFromId(clickedStoryId);
+
+  await currentUser.removeFavorite(story);
+}
+
+/** Event delegation to handle click of filled star */
+$allStoriesList.on("click", ".bi-star-fill", clickFilledStar);
+
+
+/** Function returns the story from the storyList matching the given story Id.
+ * @returns Story instance */
+function findStoryFromId(Id) {
+  const storiesArray = storyList.stories;
+
+  for (let i = 0; i < storiesArray.length; i++) {
+    if (storiesArray[i].storyId === Id) {
+      return storiesArray[i];
+    }
+  }
+}
