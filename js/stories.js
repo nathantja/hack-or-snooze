@@ -84,4 +84,37 @@ async function submitStoryAndDisplay(evt) {
 /** handles click for story submission form */
 $submitBtn.on("click", submitStoryAndDisplay);
 
+function emptyStarToggle(evt) {
+  $(evt.target).attr('class', 'bi bi-star-fill');
 
+  const clickedStoryId = $(evt.target).closest('li').attr('id');
+  console.log(clickedStoryId);
+
+
+
+  let story;
+  for (let i =0; i < storyList.stories.length; i++){
+    if (storyList.stories[i].storyId === clickedStoryId){
+      story = storyList.stories[i];
+    }
+  }
+
+  console.log(story);
+  // .map version
+  // const story = storyList.stories.map((story) => {
+  //   if (story.storyId === storyId) {
+  //     return story;
+  //   }
+  // });
+
+
+  // console.log('story after map returns', story);
+  // console.log("story Id is", story.storyId);
+  // await currentUser.addFavorite(story);
+}
+
+$allStoriesList.on("click", ".bi-star", emptyStarToggle);
+
+// function findStory(id) {
+
+// }
