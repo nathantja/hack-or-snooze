@@ -235,4 +235,35 @@ class User {
       return null;
     }
   }
+
+  /** Allow the user to add a story to favorites.*/
+  async addFavorite(story) {
+
+    const username = currentUser.username;
+    const storyId = story.storyId;
+    const token = currentUser.loginToken;
+
+    // send story to API
+    // https://hack-or-snooze-v3.herokuapp.com/users/{username}/favorites/storyId
+    const response = await fetch(
+      `${BASE_URL}/users/${username}/favorites/${storyId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: `${token}` })
+      }
+    );
+
+
+  }
+
+
+  /** Allow the user to remove a story from favorites. */
+  async removeFavorite(story) {
+
+
+
+  }
+
+
 }
