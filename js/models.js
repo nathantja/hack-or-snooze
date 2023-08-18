@@ -261,7 +261,19 @@ class User {
   /** Allow the user to remove a story from favorites. */
   async removeFavorite(story) {
 
+    const username = currentUser.username;
+    const storyId = story.storyId;
+    const token = currentUser.loginToken;
 
+    const response = await fetch(
+      `${BASE_URL}/users/${username}/favorites/${storyId}`,
+      {
+        method : "DELETE",
+        headers : { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: `${token}` })
+
+      }
+    );
 
   }
 
