@@ -30,16 +30,16 @@ class Story {
   }
 
   /** returns the story from the storyList matching the given story Id.
- * @returns Story instance */
-static findStoryFromId(Id) {
-  const storiesArray = storyList.stories;
+ * returns Story instance */
+  static async findStoryFromId(storyId) {
+    const response = await fetch(`${BASE_URL}/stories/${storyId}`, {
+      method: "GET",
+    });
+    const storyData = await response.json();
 
-  for (let i = 0; i < storiesArray.length; i++) {
-    if (storiesArray[i].storyId === Id) {
-      return storiesArray[i];
-    }
+    const fetchedStory = storyData.story;
+    return new Story(fetchedStory);
   }
-}
 }
 
 
@@ -273,12 +273,11 @@ class User {
   }
 
 
-    /** Remove a favorite story from the user's profile. Favorite is removed via
-   * an API request and also removed from the current user instance's favorites
-   * array.
-   * Method parameter takes a Story instance. */
+  /** Remove a favorite story from the user's profile. Favorite is removed via
+ * an API request and also removed from the current user instance's favorites
+ * array.
+ * Method parameter takes a Story instance. */
   async removeFavorite(story) {
-    debugger;
     const username = currentUser.username;
     const storyId = story.storyId;
     const token = currentUser.loginToken;
@@ -287,8 +286,8 @@ class User {
     const response = await fetch(
       `${BASE_URL}/users/${username}/favorites/${storyId}`,
       {
-        method : "DELETE",
-        headers : { "Content-Type": "application/json" },
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token: `${token}` })
 
       }
